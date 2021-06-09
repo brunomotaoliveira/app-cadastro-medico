@@ -1,3 +1,4 @@
+import 'package:app_cadastro_medico/components/user_tile_medico.dart';
 import 'package:app_cadastro_medico/data/dummy_users.dart';
 import 'package:flutter/material.dart';
 
@@ -6,16 +7,16 @@ class ListaMedico extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const medicos = {...DUMMY_USERS};
+    final medicos = {...DUMMY_USERS};
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Lista de Médicos'),
+        title: Center(child: Text('Lista de Médicos')),
       ),
       body: ListView.builder(
         itemCount: medicos.length,
         itemBuilder: (contexto, indice) =>
-            Text(medicos.values.elementAt(indice).nomeDoMedico),
+            MedicoUserTile(medicos.values.elementAt(indice)),
       ),
     );
   }
