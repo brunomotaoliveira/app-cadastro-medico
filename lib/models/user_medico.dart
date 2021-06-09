@@ -4,7 +4,7 @@ class Medico {
   final String nomeDoMedico;
   final String endereco;
   final String telefone;
-  final String valorDaConsulta;
+  final double valorDaConsulta;
 
   const Medico(
       {required this.id,
