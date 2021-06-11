@@ -12,6 +12,16 @@ class ListaMedico extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text('Lista de Médicos')),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.refresh),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.add),
+          ),
+        ],
       ),
       body: ListView.builder(
         itemCount: medicos.length,
