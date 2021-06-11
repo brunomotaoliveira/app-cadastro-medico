@@ -10,10 +10,31 @@ class MedicoUserTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(medico.nomeDoMedico),
-      subtitle: Text('CRM: ${medico.crm}'),
-      trailing: Text(
-        'Valor da Consulta: R\$ ${medico.valorDaConsulta}',
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('CRM: ${medico.crm}'),
+          Text('Valor da Consulta: R\$ ${medico.valorDaConsulta}')
+        ],
       ),
+      trailing: Container(
+        width: 100,
+        child: Row(
+          children: <Widget>[
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.edit),
+              color: Colors.orange,
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.delete),
+              color: Colors.red,
+            )
+          ],
+        ),
+      ),
+      isThreeLine: true,
     );
   }
 }
