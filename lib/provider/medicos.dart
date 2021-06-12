@@ -13,4 +13,8 @@ class Medicos with ChangeNotifier {
   int get count {
     return _items.length;
   }
+
+  Medico byIndex(int i) {
+    return _items.values.elementAt(i);
+  }
 }
