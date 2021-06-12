@@ -26,6 +26,7 @@ class Medicos with ChangeNotifier {
       return;
     }
 
+    //adicionar
     if (medico.id.trim().isNotEmpty && _items.containsKey(medico.id)) {
       _items.update(
         medico.id,
@@ -52,6 +53,11 @@ class Medicos with ChangeNotifier {
         ),
       );
     }
+    notifyListeners();
+  }
+
+  void remove(Medico medico) {
+    _items.remove(medico.id);
     notifyListeners();
   }
 }

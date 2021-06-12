@@ -1,4 +1,6 @@
 import 'package:app_cadastro_medico/provider/medicos.dart';
+import 'package:app_cadastro_medico/routes/app_routes.dart';
+import 'package:app_cadastro_medico/views/user_form_medico.dart';
 import 'package:app_cadastro_medico/views/user_list_medico.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +20,10 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: ListaMedico(),
+        routes: {
+          AppRoutes.HOME: (_) => ListaMedico(),
+          AppRoutes.USER_FORM: (_) => MedicoForm()
+        },
       ),
     );
   }
