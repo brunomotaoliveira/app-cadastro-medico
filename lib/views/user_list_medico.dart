@@ -1,4 +1,5 @@
 import 'package:app_cadastro_medico/components/user_tile_medico.dart';
+import 'package:app_cadastro_medico/models/user_medico.dart';
 import 'package:app_cadastro_medico/provider/medicos.dart';
 
 import 'package:flutter/material.dart';
