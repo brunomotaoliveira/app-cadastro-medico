@@ -1,8 +1,11 @@
+import 'package:app_cadastro_medico/models/user_medico.dart';
+import 'package:app_cadastro_medico/provider/medicos.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MedicoForm extends StatelessWidget {
   final _form = GlobalKey<FormState>();
-  
+  final Map<String, String> _formData = {};
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +19,17 @@ class MedicoForm extends StatelessWidget {
 
               if (isValid) {
                 _form.currentState!.save();
+                Provider.of<Medicos>(context, listen: false).put(
+                  Medico(
+                    id: _formData['id'].toString(),
+                    nomeDoMedico: _formData['nomeDoMedico'].toString(),
+                    crm: _formData['crm'].toString(),
+                    endereco: _formData['endereco'].toString(),
+                    telefone: _formData['telefone'].toString(),
+                    valorDaConsulta:
+                        double.parse(_formData['valorDaConsulta'].toString()),
+                  ),
+                );
                 Navigator.of(context).pop();
               }
             },
@@ -40,21 +54,23 @@ class MedicoForm extends StatelessWidget {
                     return 'Nome muito pequeno. No mínimo 3 letras.';
                   }
                 },
-                onSaved: (value) {
-                  print(value);
-                },
+                onSaved: (value) => _formData['nomeDoMedico'] = value!,
               ),
               TextFormField(
                 decoration: InputDecoration(labelText: 'CRM'),
+                onSaved: (value) => _formData['crm'] = value!,
               ),
               TextFormField(
                 decoration: InputDecoration(labelText: 'Valor da Consulta'),
+                onSaved: (value) => _formData['valorDaConsulta'] = value!,
               ),
               TextFormField(
                 decoration: InputDecoration(labelText: 'Endereço'),
+                onSaved: (value) => _formData['endereco'] = value!,
               ),
               TextFormField(
                 decoration: InputDecoration(labelText: 'Telefone'),
+                onSaved: (value) => _formData['telefone'] = value!,
               ),
             ],
           ),
