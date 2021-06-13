@@ -1,4 +1,5 @@
 import 'package:app_cadastro_medico/models/user_medico.dart';
+import 'package:app_cadastro_medico/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 
 class MedicoUserTile extends StatelessWidget {
@@ -22,7 +23,12 @@ class MedicoUserTile extends StatelessWidget {
         child: Row(
           children: <Widget>[
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(
+                  AppRoutes.USER_FORM,
+                  arguments: medico,
+                );
+              },
               icon: Icon(Icons.edit),
               color: Colors.orange,
             ),

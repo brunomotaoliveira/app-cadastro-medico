@@ -23,7 +23,9 @@ class ListaMedico extends StatelessWidget {
           ),
           IconButton(
             onPressed: () {
-              Navigator.of(context).pushNamed(AppRoutes.USER_FORM);
+              Navigator.of(context).pushNamed(
+                AppRoutes.USER_FORM,
+              );
             },
             icon: Icon(Icons.add),
           ),
