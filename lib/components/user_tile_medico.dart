@@ -1,6 +1,8 @@
 import 'package:app_cadastro_medico/models/user_medico.dart';
+import 'package:app_cadastro_medico/provider/medicos.dart';
 import 'package:app_cadastro_medico/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MedicoUserTile extends StatelessWidget {
   const MedicoUserTile(this.medico);
@@ -33,7 +35,32 @@ class MedicoUserTile extends StatelessWidget {
               color: Colors.orange,
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                      title: Text('Excluir Usuário'),
+                      content: Text('Tem certeza???'),
+                      actions: <Widget>[
+                        // ignore: deprecated_member_use
+                        FlatButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('Não'),
+                        ),
+                        // ignore: deprecated_member_use
+                        FlatButton(
+                          onPressed: () {
+                            Provider.of<Medicos>(context, listen: false)
+                                .remove(medico);
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('Sim'),
+                        ),
+                      ]),
+                );
+              },
               icon: Icon(Icons.delete),
               color: Colors.red,
             )
