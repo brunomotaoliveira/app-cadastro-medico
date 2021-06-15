@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => Medicos(),
-          child: MaterialApp(
+      child: MaterialApp(
         title: 'CadMedicos',
         theme: ThemeData(
           primarySwatch: Colors.blue,

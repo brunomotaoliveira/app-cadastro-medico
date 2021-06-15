@@ -39,27 +39,26 @@ class MedicoUserTile extends StatelessWidget {
                 showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
-                      title: Text('Excluir Usuário'),
-                      content: Text('Tem certeza???'),
-                      actions: <Widget>[
-                        // ignore: deprecated_member_use
-                        FlatButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: Text('Não'),
-                        ),
-                        // ignore: deprecated_member_use
-                        FlatButton(
-                          onPressed: () {
-                            Provider.of<Medicos>(context, listen: false)
-                                .remove(medico);
-                            Navigator.of(context).pop();
-                          },
-                          child: Text('Sim'),
-                        ),
-                      ]),
-                );
+                    title: Text('Excluir Usuário'),
+                    content: Text('Tem certeza???'),
+                    actions: <Widget>[
+                      // ignore: deprecated_member_use
+                      FlatButton(
+                        onPressed: () => Navigator.of(context).pop(false),
+                        child: Text('Não'),
+                      ),
+                      // ignore: deprecated_member_use
+                      FlatButton(
+                        onPressed: () => Navigator.of(context).pop(true),
+                        child: Text('Sim'),
+                      ),
+                    ],
+                  ),
+                ).then((confirmed) {
+                  if (confirmed) {
+                    Provider.of<Medicos>(context, listen: false).remove(medico);
+                  }
+                });
               },
               icon: Icon(Icons.delete),
               color: Colors.red,

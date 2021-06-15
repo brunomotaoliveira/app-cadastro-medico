@@ -1,12 +1,16 @@
-import 'dart:ffi';
-
 import 'package:app_cadastro_medico/models/user_medico.dart';
 import 'package:app_cadastro_medico/provider/medicos.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class MedicoForm extends StatelessWidget {
+class MedicoForm extends StatefulWidget {
+  @override
+  _MedicoFormState createState() => _MedicoFormState();
+}
+
+class _MedicoFormState extends State<MedicoForm> {
   final _form = GlobalKey<FormState>();
+
   final Map<String, dynamic> _formData = {};
 
   void _loadFormData(Medico medico) {
@@ -19,11 +23,16 @@ class MedicoForm extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
-    final medico = ModalRoute.of(context)!.settings.arguments as Medico;
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final Medico medico = ModalRoute.of(context)!.settings.arguments as Medico;
 
     _loadFormData(medico);
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Formulario do Medico'),
